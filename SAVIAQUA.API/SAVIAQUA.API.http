@@ -1,0 +1,7 @@
+﻿@SAVIAQUA.API_HostAddress = http://localhost:5071
+
+GET {{SAVIAQUA.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
