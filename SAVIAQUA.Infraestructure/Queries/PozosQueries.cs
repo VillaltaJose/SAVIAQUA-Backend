@@ -22,6 +22,7 @@ public static class PozosQueries
                 on c.codigo = p.codigo_ciudad
                 inner join parroquias p3
                 on p3.codigo = p.codigo_parroquia
+                /**where**/
                 order by p.nombre, j.nombre, p.fecha_creacion";
 
     public const string ObtenerTotalPozos = @"select
@@ -34,5 +35,6 @@ public static class PozosQueries
                 inner join ciudades c
                 on c.codigo = p.codigo_ciudad
                 inner join parroquias p3
-                on p3.codigo = p.codigo_parroquia";
+                on p3.codigo = p.codigo_parroquia
+                /**where**/";
 }

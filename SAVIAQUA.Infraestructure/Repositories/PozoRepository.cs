@@ -20,10 +20,29 @@ public class PozoRepository : IPozoRepository
     public async Task<(int, IEnumerable<PozoMinResponse>)> ObtenerPozos(ObtenerPozosFilter filter)
     {
         using var scope = TransactionScopeHelper.StartTransaction();
+        
+        var builder = new SqlBuilder();
 
-        var pozos = await _dbConnection.QueryAsync<PozoMinResponse>(PozosQueries.ObtenerPozos, filter);
+        if (filter.CodigoProvincia is not null)
+        {
+            builder.Where("p.codigo_provincia = :codigoProvincia");  
+        }
+        
+        if (filter.CodigoCiudad is not null)
+        {
+            builder.Where("p.codigo_ciudad = :codigoCiudad");  
+        }
+        
+        if (filter.CodigoParroquia is not null)
+        {
+            builder.Where("p.codigo_parroquia = :codigoParroquia");  
+        }
+        
+        var sqlPozos = builder.AddTemplate(PozosQueries.ObtenerPozos);
+        var sqlCount = builder.AddTemplate(PozosQueries.ObtenerTotalPozos);
 
-        var count = await _dbConnection.QueryFirstAsync<int>(PozosQueries.ObtenerTotalPozos, filter);
+        var pozos = await _dbConnection.QueryAsync<PozoMinResponse>(sqlPozos.RawSql, filter);
+        var count = await _dbConnection.QueryFirstAsync<int>(sqlCount.RawSql, filter);
         
         scope.Complete();
         return (count, pozos);
