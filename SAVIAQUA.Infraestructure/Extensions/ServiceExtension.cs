@@ -5,7 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql;
+using SAVIAQUA.Application.Services;
+using SAVIAQUA.Core.Interfaces.Repositories;
+using SAVIAQUA.Core.Interfaces.Services;
 using SAVIAQUA.Core.Options;
+using SAVIAQUA.Infraestructure.Repositories;
 
 namespace SAVIAQUA.Infraestructure.Extensions;
 
@@ -48,13 +52,16 @@ public static class ServiceExtension
 
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
+        services.AddTransient<IAutenticacionRepository, AutenticacionRepository>();
 
         return services;
     }
 
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-            
+        services.AddTransient<IPasswordService, PasswordService>();
+        services.AddTransient<IAutenticacionService, AutenticacionService>();
+        
         return services;
     }
 }
