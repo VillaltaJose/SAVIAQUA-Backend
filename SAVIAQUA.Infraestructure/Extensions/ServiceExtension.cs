@@ -53,6 +53,7 @@ public static class ServiceExtension
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddTransient<IAutenticacionRepository, AutenticacionRepository>();
+        services.AddTransient<IPozoRepository, PozoRepository>();
 
         return services;
     }
@@ -61,6 +62,7 @@ public static class ServiceExtension
     {
         services.AddTransient<IPasswordService, PasswordService>();
         services.AddTransient<IAutenticacionService, AutenticacionService>();
+        services.AddTransient<IPozoService, PozoService>();
         
         return services;
     }
