@@ -56,6 +56,7 @@ public static class ServiceExtension
         services.AddTransient<IPozoRepository, PozoRepository>();
         services.AddTransient<ILugarRepository, LugarRepository>();
         services.AddTransient<IJuntaRepository, JuntaRepository>();
+        services.AddTransient<IRolRepository, RolRepository>();
 
         return services;
     }
@@ -67,6 +68,7 @@ public static class ServiceExtension
         services.AddTransient<IPozoService, PozoService>();
         services.AddTransient<ILugarService, LugarService>();
         services.AddTransient<IJuntaService, JuntaService>();
+        services.AddTransient<IRolService, RolService>();
         
         return services;
     }
