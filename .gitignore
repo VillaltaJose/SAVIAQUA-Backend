@@ -1,54 +1,30 @@
-# .NET Core
-bin/
-obj/
+# Compilación .NET
+**/bin/
+**/obj/
+**/TestResults/
+**/*.log
+**/*.tmp
+**/*.pdb
+**/*.cache
+**/*.mdb
+
+# Visual Studio y archivos de usuario
+.vs/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-build/
-[Bb]uild[Ll]og.*
-*.dbmdl
-*.dbproj.schemaview
-*.pdb
-*.cache
-*.log
-*.vspscc
-*.vssscc
-*.ncb
-*.aps
-*.psess
-*.vsp
-*.vsix
-*.docstates
-
-# Rider
+# Archivos de Rider
 .idea/
 *.sln.iml
+*.DotSettings.user
 
-# VS Code
+# Archivos de VS Code
 .vscode/
 .history/
 
-# Others
-*.vs/
-TestResults/
-*.coverage
-*.coveragexml
-*.testresults
-*.tmp
-*.bak
-*.swp
-_ReSharper*/
-*.[Rr]e[Ss]harper
-resharper.log
-
-# NuGet
+# Archivos de paquetes y dependencias
 *.nupkg
 *.snupkg
 .nuget/
@@ -56,23 +32,42 @@ packages/
 project.lock.json
 project.fragment.lock.json
 
-# User-specific files
-*.userprefs
+# Archivos de configuración de usuario
 *.csproj.user
+*.vbproj.user
+*.sln.docstates
+*.userprefs
 
-# Dotnet CLI
-.vs/
-*.dotCover
+# Archivos relacionados a cobertura y pruebas
+*.coverage
+*.coveragexml
+*.testresults
 
-# Local database files
+# ReSharper / Rider / JetBrains
+_ReSharper*/
+*.ReSharper
+resharper.log
+
+# Archivos de base de datos local
 *.mdf
 *.ldf
+*.db
+*.db-shm
+*.db-wal
 
-# Docker
+# Docker override y variables de entorno
 **/docker-compose.override.yml
-**/*.db
+.env
+.env.*
 
-# Secrets
-secrets.json
-appsettings.*.json
-!appsettings.json
+# Archivos de configuración sensibles
+**/appsettings.*.json
+!**/appsettings.json
+**/secrets.json
+
+# Otros archivos innecesarios
+*.bak
+*.swp
+*.orig
+.DS_Store
+Thumbs.db
