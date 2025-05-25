@@ -1,0 +1,78 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+[Bb]uild[Ll]og.*
+*.dbmdl
+*.dbproj.schemaview
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*.ncb
+*.aps
+*.psess
+*.vsp
+*.vsix
+*.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+.history/
+
+# Others
+*.vs/
+TestResults/
+*.coverage
+*.coveragexml
+*.testresults
+*.tmp
+*.bak
+*.swp
+_ReSharper*/
+*.[Rr]e[Ss]harper
+resharper.log
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# User-specific files
+*.userprefs
+*.csproj.user
+
+# Dotnet CLI
+.vs/
+*.dotCover
+
+# Local database files
+*.mdf
+*.ldf
+
+# Docker
+**/docker-compose.override.yml
+**/*.db
+
+# Secrets
+secrets.json
+appsettings.*.json
+!appsettings.json
