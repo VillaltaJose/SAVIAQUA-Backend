@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "YsuepoAtY9SV9wyOdr7Li9h3U4V5bbSSUB4qmXfo+ijwJZtHhroi/+ldSKXfn8WvtWC10tGP4189dbQsdi6JVg==",
+  "dgSpecHash": "XLNsjlgvsDw=",
   "success": true,
-  "projectFilePath": "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
+  "expectedPackageFiles": [
+    "/Users/josevillalta/.nuget/packages/microsoft.netcore.app.ref/8.0.11/microsoft.netcore.app.ref.8.0.11.nupkg.sha512",
+    "/Users/josevillalta/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

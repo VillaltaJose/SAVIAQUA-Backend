@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SAVIAQUA.Infraestructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e8bdb38776f717592149e33d3cc77ee8b6a4bb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SAVIAQUA.Infraestructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SAVIAQUA.Infraestructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

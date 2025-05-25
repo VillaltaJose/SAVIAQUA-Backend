@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/SAVIAQUA.Core.csproj": {}
+    "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/SAVIAQUA.Core.csproj": {}
   },
   "projects": {
-    "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/SAVIAQUA.Core.csproj": {
+    "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/SAVIAQUA.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
+        "projectUniqueName": "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
         "projectName": "SAVIAQUA.Core",
-        "projectPath": "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
+        "projectPath": "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/SAVIAQUA.Core.csproj",
         "packagesPath": "/Users/josevillalta/.nuget/packages/",
-        "outputPath": "/Users/josevillalta/dev/Git/tesis/SAVIAQUA/SAVIAQUA.Core/obj/",
+        "outputPath": "/Users/josevillalta/dev/Git/tesis/saviaqua-backend/SAVIAQUA.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/josevillalta/.nuget/NuGet/NuGet.Config"
@@ -33,7 +33,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -49,12 +55,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
