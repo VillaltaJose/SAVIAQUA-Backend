@@ -1,3 +1,4 @@
+using SAVIAQUA.Core.App;
 using SAVIAQUA.Core.CustomEntities;
 using SAVIAQUA.Core.DTOs.Pozos;
 using SAVIAQUA.Core.Filters.Pozos;
@@ -10,10 +11,12 @@ namespace SAVIAQUA.Application.Services;
 public class PozoService : IPozoService
 {
     private readonly IPozoRepository _pozoRepository;
+    private readonly Session _session;
 
-    public PozoService(IPozoRepository pozoRepository)
+    public PozoService(IPozoRepository pozoRepository, Session session)
     {
         _pozoRepository = pozoRepository;
+        _session = session;
     }
 
     public async Task<Result<IEnumerable<PozoMinResponse>>> ObtenerPozos(ObtenerPozosFilter filter)
@@ -34,5 +37,17 @@ public class PozoService : IPozoService
         };
 
         return result;
+    }
+
+    public async Task<Result<int>> CrearNuevoPozo(NuevoPozoRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        request.CodigoUsuarioRegistra = _session.CodigoUsuario;
+
+        var codigo = await _pozoRepository.RegistrarNuevoPozo(request);
+        
+        scope.Complete();
+        return Result<int>.Ok(codigo);
     }
 }

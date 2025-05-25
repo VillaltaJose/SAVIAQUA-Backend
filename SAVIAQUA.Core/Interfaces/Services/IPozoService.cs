@@ -7,4 +7,6 @@ namespace SAVIAQUA.Core.Interfaces.Services;
 public interface IPozoService
 {
     Task<Result<IEnumerable<PozoMinResponse>>> ObtenerPozos(ObtenerPozosFilter filter);
+
+    Task<Result<int>> CrearNuevoPozo(NuevoPozoRequest request);
 }

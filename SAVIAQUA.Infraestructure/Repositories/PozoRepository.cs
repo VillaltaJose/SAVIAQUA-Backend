@@ -52,4 +52,14 @@ public class PozoRepository : IPozoRepository
         scope.Complete();
         return (count, pozos);
     }
+
+    public async Task<int> RegistrarNuevoPozo(NuevoPozoRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var codigo = await _dbConnection.ExecuteScalarAsync<int>(PozosQueries.CrearNuevoPozo, request);
+        
+        scope.Complete();
+        return codigo;
+    }
 }

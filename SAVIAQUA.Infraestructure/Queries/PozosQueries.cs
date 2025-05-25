@@ -37,4 +37,30 @@ public static class PozosQueries
                 inner join parroquias p3
                 on p3.codigo = p.codigo_parroquia
                 /**where**/";
+
+    public const string CrearNuevoPozo = @"insert into pozos (
+					codigo_junta,
+					nombre,
+					latitude,
+					longitude,
+					observaciones,
+					codigo_provincia,
+					codigo_ciudad,
+					codigo_parroquia,
+					codigo_usuario_registra,
+					fecha_edicion,
+					fecha_creacion
+				) values (
+					:codigoJunta,
+					:nombre,
+					:latitude,
+					:longitude,
+					:observaciones,
+					:codigoProvincia,
+					:codigoCiudad,
+					:codigoParroquia,
+					:codigoUsuarioRegistra,
+					now(),
+					now()
+				) returning codigo";
 }
