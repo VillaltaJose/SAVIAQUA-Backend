@@ -22,6 +22,11 @@ public class PozoRepository : IPozoRepository
         using var scope = TransactionScopeHelper.StartTransaction();
         
         var builder = new SqlBuilder();
+        
+        if (filter.CodigoJunta is not null)
+        {
+            builder.Where("p.codigo_junta = :codigoJunta");  
+        }
 
         if (filter.CodigoProvincia is not null)
         {
