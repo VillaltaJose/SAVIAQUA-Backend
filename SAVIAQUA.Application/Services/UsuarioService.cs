@@ -32,9 +32,9 @@ public class UsuarioService : IUsuarioService
             Correo = request.Correo,
             CodigoJunta = request.CodigoJunta,
             CodigoRol = request.CodigoRol,
-            FechaCreacion = DateTime.Now,
-            FechaEdicion = DateTime.Now,
-            FechaCambioClave = DateTime.Now,
+            FechaCreacion = DateTime.UtcNow,
+            FechaEdicion = DateTime.UtcNow,
+            FechaCambioClave = DateTime.UtcNow,
             HashClave = _passwordService.Hash(clave),
         };
 
