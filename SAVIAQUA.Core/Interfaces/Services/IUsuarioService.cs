@@ -6,5 +6,6 @@ namespace SAVIAQUA.Core.Interfaces.Services;
 
 public interface IUsuarioService
 {
+    Task<Result<NuevoUsuarioResponse>> RegistrarNuevoUsuario(NuevoUsuarioRequest request);
     Task<Result<IEnumerable<UsuarioResponse>>> ObtenerUsuarios(ObtenerUsuariosFilter filter);
 }

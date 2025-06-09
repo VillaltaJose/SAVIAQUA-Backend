@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAVIAQUA.API.Filters;
+using SAVIAQUA.Core.DTOs.Usuarios;
 using SAVIAQUA.Core.Filters.Usuarios;
 using SAVIAQUA.Core.Interfaces.Services;
 
@@ -17,6 +18,14 @@ public class UsuariosController : ControllerBase
     public UsuariosController(IUsuarioService usuarioService)
     {
         _usuarioService = usuarioService;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RegistrarNuevoUsuario(NuevoUsuarioRequest request)
+    {
+        var result = await _usuarioService.RegistrarNuevoUsuario(request);
+
+        return Ok(result);
     }
 
     [HttpGet]

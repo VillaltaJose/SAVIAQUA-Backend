@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using SAVIAQUA.Core.DTOs.Usuarios;
+using SAVIAQUA.Core.Entities;
 using SAVIAQUA.Core.Filters.Usuarios;
 using SAVIAQUA.Core.Helpers;
 using SAVIAQUA.Core.Interfaces.Repositories;
@@ -15,6 +16,16 @@ public class UsuarioRepository : IUsuarioRepository
     public UsuarioRepository(IDbConnection dbConnection)
     {
         _dbConnection = dbConnection;
+    }
+
+    public async Task<int> RegistrarNuevoUsuario(Usuario usuario)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var codigo = await _dbConnection.ExecuteScalarAsync<int>(UsuariosQueries.CrearUsuario, usuario);
+        
+        scope.Complete();
+        return codigo;
     }
 
     public async Task<IEnumerable<UsuarioResponse>> ObtenerUsuarios(ObtenerUsuariosFilter filter)
