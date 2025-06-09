@@ -1,3 +1,4 @@
+using SAVIAQUA.Core.App;
 using SAVIAQUA.Core.CustomEntities;
 using SAVIAQUA.Core.DTOs.Juntas;
 using SAVIAQUA.Core.Filters.Juntas;
@@ -10,10 +11,12 @@ namespace SAVIAQUA.Application.Services;
 public class JuntaService : IJuntaService
 {
     private readonly IJuntaRepository _juntaRepository;
+    private readonly Session _session;
 
-    public JuntaService(IJuntaRepository juntaRepository)
+    public JuntaService(IJuntaRepository juntaRepository, Session session)
     {
         _juntaRepository = juntaRepository;
+        _session = session;
     }
 
     public async Task<Result<IEnumerable<JuntaMinResponse>>> ObtenerJuntasMin()
@@ -44,5 +47,15 @@ public class JuntaService : IJuntaService
         };
 
         return result;
+    }
+    
+    public async Task<Result<int>> CrearNuevaJunta(NuevaJuntaRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var codigo = await _juntaRepository.RegistrarNuevaJunta(request);
+        
+        scope.Complete();
+        return Result<int>.Ok(codigo);
     }
 }

@@ -34,4 +34,26 @@ public static class JuntasQueries
                 count(*)
                 from juntas j
                 /**where**/";
+    
+    public const string CrearNuevaJunta = @"insert into juntas (
+					nombre,
+					latitude,
+					longitude,
+					observaciones,
+					codigo_provincia,
+					codigo_ciudad,
+					codigo_parroquia,
+					fecha_edicion,
+					fecha_creacion
+				) values (
+					:nombre,
+					:latitude,
+					:longitude,
+					:observaciones,
+					:codigoProvincia,
+					:codigoCiudad,
+					:codigoParroquia,
+					now(),
+					now()
+				) returning codigo";
 }

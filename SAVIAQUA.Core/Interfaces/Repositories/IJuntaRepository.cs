@@ -7,4 +7,5 @@ public interface IJuntaRepository
 {
     Task<IEnumerable<JuntaMinResponse>> ObtenerJuntasMin();
     Task<(int, IEnumerable<JuntaResponse>)> ObtenerJuntas(ObtenerJuntasFilter filtros);
+    Task<int> RegistrarNuevaJunta(NuevaJuntaRequest request);
 }

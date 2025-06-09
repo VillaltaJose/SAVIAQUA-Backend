@@ -57,4 +57,14 @@ public class JuntaRepository : IJuntaRepository
         scope.Complete();
         return (count, juntas);
     }
+    
+    public async Task<int> RegistrarNuevaJunta(NuevaJuntaRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var codigo = await _dbConnection.ExecuteScalarAsync<int>(JuntasQueries.CrearNuevaJunta, request);
+        
+        scope.Complete();
+        return codigo;
+    }
 }

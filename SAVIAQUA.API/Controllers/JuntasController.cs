@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SAVIAQUA.Core.DTOs.Juntas;
 using SAVIAQUA.Core.Filters.Juntas;
 using SAVIAQUA.Core.Interfaces.Services;
 
@@ -26,5 +27,12 @@ public class JuntasController : ControllerBase
 
         var juntas = await _juntaService.ObtenerJuntas(filtros);
         return Ok(juntas);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CrearPozo([FromBody] NuevaJuntaRequest request)
+    {
+        var result = await _juntaService.CrearNuevaJunta(request);
+        return Ok(result);
     }
 }
