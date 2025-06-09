@@ -9,26 +9,19 @@ namespace SAVIAQUA.API.Controllers;
 [Route("api/[controller]")]
 [Authorize]
 [ServiceFilter<AuthFilter>]
-public class RolesController : ControllerBase
+public class PermisosController : ControllerBase
 {
     private readonly IRolService _rolService;
 
-    public RolesController(IRolService rolService)
+    public PermisosController(IRolService rolService)
     {
         _rolService = rolService;
     }
 
     [HttpGet]
-    public async Task<IActionResult> ObtenerRoles()
+    public async Task<IActionResult> ObtenerPermisos()
     {
-        var result = await _rolService.ObtenerRoles();
-        return Ok(result);
-    }
-    
-    [HttpGet("{codigoRol:int}")]
-    public async Task<IActionResult> ObtenerRol(int codigoRol)
-    {
-        var result = await _rolService.ObtenerRol(codigoRol);
+        var result = await _rolService.ObtenerPermisos();
         return Ok(result);
     }
 }

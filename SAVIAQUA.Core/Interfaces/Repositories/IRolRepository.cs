@@ -4,5 +4,8 @@ namespace SAVIAQUA.Core.Interfaces.Repositories;
 
 public interface IRolRepository
 {
-    Task<IEnumerable<RolResponse>> ObtenerRoles();
+    Task<IEnumerable<RolMinResponse>> ObtenerRoles();
+    Task<RolResponse?> ObtenerRol(int codigoRol);
+    Task<IEnumerable<int>> ObtenerPermisosRol(int codigoRol);
+    Task<IEnumerable<PermisoResponse>> ObtenerPermisos();
 }

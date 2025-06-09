@@ -15,7 +15,7 @@ public class RolService : IRolService
         _rolRepository = rolRepository;
     }
 
-    public async Task<Result<IEnumerable<RolResponse>>> ObtenerRoles()
+    public async Task<Result<IEnumerable<RolMinResponse>>> ObtenerRoles()
     {
         using var scope = TransactionScopeHelper.StartTransaction();
 
@@ -23,6 +23,35 @@ public class RolService : IRolService
         
         scope.Complete();
 
-        return Result<IEnumerable<RolResponse>>.Ok(roles);
+        return Result<IEnumerable<RolMinResponse>>.Ok(roles);
+    }
+
+    public async Task<Result<RolResponse>> ObtenerRol(int codigoRol)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var rol = await _rolRepository.ObtenerRol(codigoRol);
+
+        if (rol is null)
+        {
+            return Result<RolResponse>.Fail("Rol no encontrado");
+        }
+
+        var permisos = await _rolRepository.ObtenerPermisosRol(codigoRol);
+        
+        rol.Permisos = permisos.ToList();
+        
+        scope.Complete();
+        return Result<RolResponse>.Ok(rol);
+    }
+
+    public async Task<Result<IEnumerable<PermisoResponse>>> ObtenerPermisos()
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var permisos = await _rolRepository.ObtenerPermisos();
+
+        scope.Complete();
+        return Result<IEnumerable<PermisoResponse>>.Ok(permisos);
     }
 }
