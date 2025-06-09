@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SAVIAQUA.Core.Filters.Juntas;
 using SAVIAQUA.Core.Interfaces.Services;
 
 namespace SAVIAQUA.API.Controllers;
@@ -15,7 +16,7 @@ public class JuntasController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> ObtenerJuntas([FromQuery] bool minified)
+    public async Task<IActionResult> ObtenerJuntas([FromQuery] ObtenerJuntasFilter filtros, [FromQuery] bool minified)
     {
         if (minified)
         {
@@ -23,6 +24,7 @@ public class JuntasController : ControllerBase
             return Ok(juntasMin);
         }
 
-        return Ok();
+        var juntas = await _juntaService.ObtenerJuntas(filtros);
+        return Ok(juntas);
     }
 }
