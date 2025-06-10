@@ -9,4 +9,6 @@ public interface IPozoService
     Task<Result<IEnumerable<PozoMinResponse>>> ObtenerPozos(ObtenerPozosFilter filter);
 
     Task<Result<int>> CrearNuevoPozo(NuevoPozoRequest request);
+
+    Task<Result<IEnumerable<MedicionPozo>>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request);
 }

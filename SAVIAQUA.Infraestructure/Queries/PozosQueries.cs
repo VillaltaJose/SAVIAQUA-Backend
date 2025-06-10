@@ -63,4 +63,16 @@ public static class PozosQueries
 					now(),
 					now()
 				) returning codigo";
+
+    public const string ObtenerMediciones = @"select
+			mp.fecha_registro as FechaRegistro,
+			mp.m1,
+			mp.m2,
+			mp.m3
+			from mediciones_pozos mp 
+			where
+			mp.codigo_pozo = :codigoPozo
+			and date(mp.fecha_registro) between date(:fechaInicio) and date(:fechaFin)
+			order by mp.fecha_registro desc
+";
 }

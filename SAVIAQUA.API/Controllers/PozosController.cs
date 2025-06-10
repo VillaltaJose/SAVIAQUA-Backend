@@ -33,4 +33,11 @@ public class PozosController : ControllerBase
         var result = await _pozoService.CrearNuevoPozo(request);
         return Ok(result);
     }
+    
+    [HttpPost("mediciones")]
+    public async Task<IActionResult> ObtenerMediciones([FromBody] ObtenerMedicionesRequest request)
+    {
+        var result = await _pozoService.ObtenerMedicionesFecha(request);
+        return Ok(result);
+    }
 }

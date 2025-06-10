@@ -8,4 +8,6 @@ public interface IPozoRepository
     Task<(int, IEnumerable<PozoMinResponse>)> ObtenerPozos(ObtenerPozosFilter filter);
 
     Task<int> RegistrarNuevoPozo(NuevoPozoRequest request);
+
+    Task<IEnumerable<MedicionPozo>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request);
 }
