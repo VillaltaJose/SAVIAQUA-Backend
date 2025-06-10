@@ -26,6 +26,13 @@ public class PozosController : ControllerBase
         var result = await _pozoService.ObtenerPozos(filter);
         return Ok(result);
     }
+    
+    [HttpGet("{codigoPozo:int}")]
+    public async Task<IActionResult> ObtenerPozo(int codigoPozo)
+    {
+        var result = await _pozoService.ObtenerPozo(codigoPozo);
+        return Ok(result);
+    }
 
     [HttpPost]
     public async Task<IActionResult> CrearPozo([FromBody] NuevoPozoRequest request)

@@ -63,6 +63,19 @@ public class PozoRepository : IPozoRepository
         return codigo;
     }
 
+    public async Task<PozoResponse?> ObtenerPozo(int codigoPozo)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var pozo = await _dbConnection.QueryFirstOrDefaultAsync<PozoResponse?>(PozosQueries.ObtenerPozo, new
+        {
+            codigoPozo
+        });
+        
+        scope.Complete();
+        return pozo;
+    } 
+
     public async Task<IEnumerable<MedicionPozo>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request)
     {
         using var scope = TransactionScopeHelper.StartTransaction();

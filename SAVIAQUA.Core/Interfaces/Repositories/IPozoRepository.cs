@@ -10,4 +10,6 @@ public interface IPozoRepository
     Task<int> RegistrarNuevoPozo(NuevoPozoRequest request);
 
     Task<IEnumerable<MedicionPozo>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request);
+
+    Task<PozoResponse?> ObtenerPozo(int codigoPozo);
 }

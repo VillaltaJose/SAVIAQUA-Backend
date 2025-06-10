@@ -73,6 +73,32 @@ public static class PozosQueries
 			where
 			mp.codigo_pozo = :codigoPozo
 			and date(mp.fecha_registro) between date(:fechaInicio) and date(:fechaFin)
-			order by mp.fecha_registro desc
-";
+			order by mp.fecha_registro desc";
+
+    public const string ObtenerPozo = @"select
+			p.codigo,
+			p.nombre,
+			p.observaciones,
+			p.fecha_creacion,
+			p.latitude,
+			p.longitude,
+			p.codigo_junta  as codigoJunta,
+			j.nombre as junta,
+			p.codigo_provincia as codigoProvincia,
+			p2.nombre as provincia,
+			p.codigo_ciudad as codigoCiudad,
+			c.nombre as ciudad,
+			p.codigo_parroquia as codigoParroquia,
+			p3.nombre as parroquia
+			from pozos p 
+			inner join provincias p2 
+			on p2.codigo = p.codigo_provincia
+			inner join ciudades c 
+			on c.codigo = p.codigo_ciudad
+			inner join parroquias p3 
+			on p3.codigo = p.codigo_parroquia
+			inner join juntas j
+			on j.codigo = p.codigo_junta
+			where
+			p.codigo = :codigoPozo";
 }

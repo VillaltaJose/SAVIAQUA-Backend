@@ -38,6 +38,22 @@ public class PozoService : IPozoService
 
         return result;
     }
+    
+    public async Task<Result<PozoResponse>> ObtenerPozo(int codigoPozo)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var pozo = await _pozoRepository.ObtenerPozo(codigoPozo);
+
+        if (pozo is null)
+        {
+            return Result<PozoResponse>.Fail("Pozo no encontrado");
+        }
+        
+        scope.Complete();
+
+        return Result<PozoResponse>.Ok(pozo);
+    }
 
     public async Task<Result<int>> CrearNuevoPozo(NuevoPozoRequest request)
     {
