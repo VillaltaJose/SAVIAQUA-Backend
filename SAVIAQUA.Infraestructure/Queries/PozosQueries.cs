@@ -68,7 +68,9 @@ public static class PozosQueries
 			mp.fecha_registro as FechaRegistro,
 			mp.m1,
 			mp.m2,
-			mp.m3
+			mp.m3,
+			mp.m4,
+			mp.cloro_residual as CloroResidual
 			from mediciones_pozos mp 
 			where
 			mp.codigo_pozo = :codigoPozo
