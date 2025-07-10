@@ -85,4 +85,17 @@ public class PozoRepository : IPozoRepository
         scope.Complete();
         return mediciones;
     }
+    
+    public async Task<MedicionPozo?> ObtenerUltimaMedicion(int codigoPozo)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var mediciones = await _dbConnection.QueryFirstOrDefaultAsync<MedicionPozo?>(PozosQueries.ObtenerUltimaMedicion, new
+        {
+            codigoPozo
+        });
+        
+        scope.Complete();
+        return mediciones;
+    }
 }

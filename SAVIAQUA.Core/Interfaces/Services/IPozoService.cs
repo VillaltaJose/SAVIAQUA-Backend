@@ -13,4 +13,6 @@ public interface IPozoService
     Task<Result<int>> CrearNuevoPozo(NuevoPozoRequest request);
 
     Task<Result<IEnumerable<MedicionPozo>>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request);
+
+    Task<Result<MedicionPozo?>> ObtenerUltimaMedicion(int codigoPozo);
 }

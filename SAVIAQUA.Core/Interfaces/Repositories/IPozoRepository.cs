@@ -12,4 +12,6 @@ public interface IPozoRepository
     Task<IEnumerable<MedicionPozo>> ObtenerMedicionesFecha(ObtenerMedicionesRequest request);
 
     Task<PozoResponse?> ObtenerPozo(int codigoPozo);
+
+    Task<MedicionPozo?> ObtenerUltimaMedicion(int codigoPozo);
 }

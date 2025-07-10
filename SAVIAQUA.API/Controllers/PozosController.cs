@@ -41,6 +41,13 @@ public class PozosController : ControllerBase
         return Ok(result);
     }
     
+    [HttpPost("{codigoPozo:int}/mediciones/actualidad")]
+    public async Task<IActionResult> ObtenerUltimaMedicion(int codigoPozo)
+    {
+        var result = await _pozoService.ObtenerUltimaMedicion(codigoPozo);
+        return Ok(result);
+    }
+    
     [HttpPost("mediciones")]
     public async Task<IActionResult> ObtenerMediciones([FromBody] ObtenerMedicionesRequest request)
     {

@@ -76,4 +76,14 @@ public class PozoService : IPozoService
         scope.Complete();
         return Result<IEnumerable<MedicionPozo>>.Ok(mediciones);
     }
+    
+    public async Task<Result<MedicionPozo?>> ObtenerUltimaMedicion(int codigoPozo)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var medicion = await _pozoRepository.ObtenerUltimaMedicion(codigoPozo);
+        
+        scope.Complete();
+        return Result<MedicionPozo?>.Ok(medicion);
+    }
 }
