@@ -39,4 +39,31 @@ public class PerfilRepository : IPerfilRepository
         scope.Complete();
         return filas > 0;
     }
+
+    public async Task<string?> ObtenerHashClave(int codigoUsuario)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var clave = await _dbConnection.QueryFirstOrDefaultAsync<string?>(PerfilQueries.ObtenerHashClave, new
+        {
+            codigoUsuario
+        });
+        
+        scope.Complete();
+        return clave;
+    }
+    
+    public async Task<bool> ActualizarClave(int codigoUsuario, string passwordHash)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+        
+        var rows = await _dbConnection.ExecuteAsync(PerfilQueries.ActualizarClave, new
+        {
+            codigoUsuario,
+            passwordHash,
+        });
+        
+        scope.Complete();
+        return rows > 0;
+    }
 }

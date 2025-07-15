@@ -25,4 +25,14 @@ public static class PerfilQueries
             fecha_edicion = :fechaEdicion
             where
             codigo = :codigo";
+
+    public const string ObtenerHashClave = @"select clave from usuarios
+            where 
+            codigo = :codigoUsuario";
+    
+    public const string ActualizarClave = @"update usuarios set
+            clave = :passwordHash,
+            fecha_cambio_clave = now()
+            where
+            codigo = :codigoUsuario";
 }

@@ -7,4 +7,5 @@ public interface IPerfilService
 {
     Task<Result<PerfilResponse>> ObtenerMiPerfil();
     Task<Result<bool>> ActualizarPerfil(ActualizarPerfilRequest request);
+    Task<Result<bool>> ActualizarClave(ActualizarClaveRequest request);
 }

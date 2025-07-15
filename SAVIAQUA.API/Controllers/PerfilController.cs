@@ -32,4 +32,11 @@ public class PerfilController : ControllerBase
         var result = await _perfilService.ActualizarPerfil(request);
         return Ok(result);
     }
+    
+    [HttpPut("clave")]
+    public async Task<IActionResult> ActualizarClave([FromBody] ActualizarClaveRequest request)
+    {
+        var result = await _perfilService.ActualizarClave(request);
+        return Ok(result);
+    }
 }
