@@ -41,4 +41,33 @@ public static class NotificacionesQueries
                                       where codigo_usuario = :codigoUsuario
                                       and codigo = :codigoNotificacion
                                       """;
+
+    public const string InsertarNotificacion = """
+                                               insert into notificaciones (
+                                               	codigo_usuario,
+                                               	codigo_categoria,
+                                               	fecha,
+                                               	referencia_int,
+                                               	referencia_str,
+                                               	leida,
+                                               	texto
+                                               ) values (
+                                               	:codigoUsuario,
+                                               	:codigoCategoria,
+                                               	now(),
+                                               	:referenciaInt,
+                                               	:referenciaStr,
+                                               	false,
+                                               	:texto
+                                               )
+                                               """;
+
+    public const string ObtenerCategoria = """
+                                           select
+                                           cn.plantilla as Plantilla,
+                                           cn.sql_parametros as SqlParametros,
+                                           cn.sql_destinatarios as SqlDestinatarios
+                                           from categorias_notificaciones cn 
+                                           where cn.codigo = :codigoCategoria
+                                           """;
 }

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json.Serialization;
 using SAVIAQUA.API.Delegates;
 using SAVIAQUA.API.Filters;
+using SAVIAQUA.API.Hubs;
+using SAVIAQUA.API.Listeners;
 using SAVIAQUA.Core.App;
 using SAVIAQUA.Core.Options;
 using SAVIAQUA.Infraestructure.Extensions;
@@ -19,6 +21,10 @@ public class Startup(IConfiguration configuration)
         // {
         //     loggingBuilder.AddSerilog(CreateLogger());
         // });
+        
+        services.AddSignalR();
+
+        services.AddHostedService<RabbitListener>();
 
         services.AddAntiforgery(ServiceCollectionActions.SetupAntiForgery);
         services.AddTransient<AuthFilter>();
@@ -89,6 +95,7 @@ public class Startup(IConfiguration configuration)
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapHub<NotificationHub>("/hubs/notifications");
         });
     }
 
