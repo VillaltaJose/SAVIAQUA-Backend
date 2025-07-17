@@ -1,5 +1,6 @@
 using SAVIAQUA.Core.CustomEntities;
 using SAVIAQUA.Core.DTOs.Roles;
+using SAVIAQUA.Core.Entities;
 using SAVIAQUA.Core.Helpers;
 using SAVIAQUA.Core.Interfaces.Repositories;
 using SAVIAQUA.Core.Interfaces.Services;
@@ -53,5 +54,50 @@ public class RolService : IRolService
 
         scope.Complete();
         return Result<IEnumerable<PermisoResponse>>.Ok(permisos);
+    }
+
+    public async Task<Result> ActualizarRol(EditarRolRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        await _rolRepository.EliminarPermisosRol(request.Codigo);
+        
+        foreach (var codigoPermiso in request.Permisos)
+        {
+            await _rolRepository.RegistrarPermiso(request.Codigo, codigoPermiso);
+        }
+
+        await _rolRepository.ActualizarRol(new Rol
+        {
+            Codigo = request.Codigo,
+            Nombre = request.Nombre,
+            Descripcion = request.Descripcion,
+            Activo = request.Activo
+        });
+        
+        scope.Complete();
+        return Result.Ok();
+    }
+    
+    public async Task<Result<int>> RegistrarRol(CrearRolRequest request)
+    {
+        using var scope = TransactionScopeHelper.StartTransaction();
+
+        var codigo = await _rolRepository.CrearRol(new Rol
+        {
+            Nombre = request.Nombre,
+            Descripcion = request.Descripcion,
+            Activo = request.Activo
+        });
+        
+        Console.WriteLine(codigo);
+        
+        foreach (var codigoPermiso in request.Permisos)
+        {
+            await _rolRepository.RegistrarPermiso(codigo, codigoPermiso);
+        }
+        
+        scope.Complete();
+        return Result<int>.Ok(codigo);
     }
 }
